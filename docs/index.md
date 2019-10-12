@@ -1554,7 +1554,8 @@ The browser may use the `--grep` as functionality. Append a query-string to your
 
 ### Browser Configuration
 
-Mocha options can be set via `mocha.setup()`. Examples:
+Mocha options can be set via `mocha.setup()`.
+Not all [command-line options](#command-line-usage) are supported in browser context.
 
 ```js
 // Use "tdd" interface.  This is a shortcut to setting the interface;
@@ -1566,11 +1567,17 @@ mocha.setup({
   ui: 'tdd'
 });
 
-// Use "tdd" interface, ignore leaks, and force all tests to be asynchronous
+// Examples:
 mocha.setup({
-  ui: 'tdd',
-  checkLeaks: false, // default
-  asyncOnly: true
+  asyncOnly: true,
+  bail: true,
+  checkLeaks: true,
+  forbidOnly: true,
+  forbidPending: true,
+  retries: 3,
+  slow: '100',
+  timeout: '2000',
+  ui: 'bdd'
 });
 ```
 
