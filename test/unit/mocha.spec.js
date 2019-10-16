@@ -20,7 +20,6 @@ describe('Mocha', function() {
     beforeEach(function() {
       sandbox.stub(Mocha.prototype, 'timeout').returnsThis();
       sandbox.stub(Mocha.prototype, 'globals').returnsThis();
-      sandbox.stub(Mocha.prototype, 'useInlineDiffs').returnsThis();
     });
 
     describe('when "options.timeout" is `undefined`', function() {
@@ -47,16 +46,6 @@ describe('Mocha', function() {
         new Mocha({global: ['singular']});
         expect(Mocha.prototype.globals, 'to have a call satisfying', [
           ['singular']
-        ]).and('was called once');
-      });
-    });
-
-    describe('when "options.inlineDiffs" is `undefined`', function() {
-      it('should set inlineDiffs to `true`', function() {
-        // eslint-disable-next-line no-new
-        new Mocha({inlineDiffs: true});
-        expect(Mocha.prototype.useInlineDiffs, 'to have a call satisfying', [
-          true
         ]).and('was called once');
       });
     });
